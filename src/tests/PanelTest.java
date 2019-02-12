@@ -1,6 +1,7 @@
-package pokemon.tests;
+package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 
 import java.awt.Component;
 
@@ -13,8 +14,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import pokemon.controller.PokedexController;
-import pokemon.view.PokedexPanel;
+import controller.Controller;
+import view.PokedexPanel;
 
 class PanelTest
 {

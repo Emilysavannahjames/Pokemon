@@ -10,9 +10,9 @@ public class PokedexFrame extends JFrame
 	
 	public PokedexFrame(Controller app)
 	{
-		super();
+		super(); //when you have an extends
 		this.app = app;
-		this.appPanel = new PokedexPanel(app);
+		//this.appPanel = new PokedexPanel(app);
 		
 		setupFrame();
 	}
