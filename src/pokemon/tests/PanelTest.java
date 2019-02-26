@@ -1,6 +1,7 @@
-package tests;
+package pokemon.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 
 
 import java.awt.Component;
@@ -14,9 +15,73 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import controller.Controller;
-import view.PokedexPanel;
+import pokemon.controller.Controller;
+import pokemon.view.PokedexPanel;
 
+public class PokedexPanel extends JPanel
+{
+	private Controller app;
+	private SpringLayout appLayout;
+	
+	private JButton changeButton;
+	private JComboBox<String>pokedexDropdown;
+	
+	private JTextField numberField;
+	private JTextField nameField;
+	private JTextField evolveField;
+	private JTextField attackField;
+	private JTextField enhancementField;
+	private JTextField healthField;
+	
+	private JLabel numberLabel;
+	private JLabel nameLabel;
+	private JLabel evolveLabel;
+	private JLabel attackLabel;
+	private JLabel enhanceLabel;
+	private JLabel healthLabel;
+	private JLabel imageLabel;	
+}
+
+public PokedexPanel(Controller app)
+{
+	super();
+	
+	this.app = app;
+	
+	this.appLayout = new SpringLayout();
+	
+	numberField = new JTextField("0");
+	nameField = new JTextField("My Pokename");
+	evolveField = new JTextField("false");
+	attackField = new JTextField("0");
+	enhancementField = new JTextField("0");
+	healthField = new JTextField("0");
+	
+	healthLabel = new JLabel("This pokemon health is");
+	pokedexDropdown = new JComboBox<String>();
+	
+	setupDropdown();
+	setupPanel();
+	setupLayout();
+	setupListeners();
+	
+}
+private void setupDropdown()
+{
+	DefaultComboBoxModel<String> temp = new DefaultComboBoxModel<String>(app.buildPokedexText());
+	pokedexDropdown.setModel(temp);
+}
+
+public void setupPanel()
+{
+	this.setupLayout(appLayout);
+	this.add(pokedexDropdown);
+	this.add(healthField);
+	this.add(numberField);
+	this.add(evolveField);
+	this.add(enhancementField);
+	
+}
 class PanelTest
 {
 	private PokedexPanel testedPanel;
@@ -24,7 +89,7 @@ class PanelTest
 	@BeforeEach
 	void setUp() throws Exception
 	{
-		testedPanel = new PokedexPanel(new PokedexController());
+		testedPanel = new PokedexPanel(new Controller());
 	}
 
 	@AfterEach
@@ -77,11 +142,6 @@ class PanelTest
 			if (examined instanceof JButton)
 			{
 				assertTrue( ((JButton)examined).getActionListeners().length == 1, "Your button must have a listener");
-			}
-			
-			if (examined instanceof JComboBox)
-			{
-				assertTrue( ((JComboBox)examined).getItemListeners().length == 1, "Your JComboBox must have a listener");
 			}
 			
 		}

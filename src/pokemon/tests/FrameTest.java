@@ -18,7 +18,7 @@ class FrameTest
 	@BeforeEach
 	void setUp() throws Exception
 	{
-		testedFrame = new PokedexFrame(new PokedexController());
+		testedFrame = new PokedexFrame(new Controller());
 	}
 
 	@AfterEach
