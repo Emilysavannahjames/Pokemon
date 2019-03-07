@@ -1,7 +1,7 @@
 package pokemon.model;
 import javax.swing.JOptionPane;
 
-public class GrizzlyBear extends Pokemon implements Water
+public class GrizzlyBear extends Pokemon 
 {
 	public GrizzlyBear()
 	{

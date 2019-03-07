@@ -112,6 +112,7 @@ public PokedexPanel(Controller app)
 		this.add(enhancementField);
 		this.add(attackField);
 		this.add(nameField);
+		this.add(saveButton);
 		
 		this.add(healthLabel);
 		this.add(numberLabel);
@@ -160,6 +161,15 @@ public PokedexPanel(Controller app)
 			public void actionPerformed(ActionEvent click)
 			{
 				sendDataToController();
+			}
+		});
+		
+		saveButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent selection)
+			{
+				app.savePokedex();
+				
 			}
 		});
 		
